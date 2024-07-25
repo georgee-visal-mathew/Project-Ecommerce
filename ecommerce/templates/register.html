@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>Registration</title>
+{% endblock %}
+{% block content %}
+<center><h1 class="mt-2">Looks like you're new here!</h1>
+<p class='mt-1'>Sign up to get started</p>
+    <br>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+    <label class="form-label">Username</label>
+    <input class="form-control" type="text" placeholder="Enter username" name="u"></div>
+        <div class="mb-3">
+    <label class="form-label">Password</label>
+    <input class="form-control" type="password" placeholder="Enter password" name="p"></div>
+        <div class="mb-3">
+             <label class="form-label">Confirm Password</label>
+    <input class="form-control" type="password" placeholder="Confirm your password" name="cp"></div>
+        <div class="mb-3">
+    <label class="form-label">First Name</label>
+    <input class="form-control" type="text" placeholder="Enter first name" name="fn"></div>
+        <div class="mb-3">
+            <label class="form-label">Last Name</label>
+    <input class="form-control" type="text" placeholder="Enter last name" name="ln"></div>
+        <div class="mb-3">
+                   <label class="form-label">Email</label>
+    <input class="form-control" type="email" placeholder="Enter email" name="em"></div>
+        <div class="mb-3">
+    <input class="form-control btn-warning" type="submit" value="Sign Up"></div>
+</form>
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</center>
+{% endblock %}

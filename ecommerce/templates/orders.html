@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>Cart</title>
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+<center><h2 class="mt-4">Your Orders</h2></center>
+    <br>
+<hr>
+<div class="row">
+    {% for i in orders %}
+    <div class="col-sm-5">
+<img src="{{i.product.image.url}}" height="150px" width="150px">
+    </div>
+    <div class="col-sm-6">
+        <p><b>Delivery status : {{i.delivery_status}}</b></p>
+       <p>Order Date & Time : {{i.ordered_date}}</p>
+<p>{{i.product.name}}</p>
+        <p>₹{{i.product.price}}</p>
+        <p>Quantity : {{i.no_of_items}}</p>
+    </div>
+    <hr class="mt-4">
+{% endfor %}
+</div>
+</div>
+
+{% endblock %}

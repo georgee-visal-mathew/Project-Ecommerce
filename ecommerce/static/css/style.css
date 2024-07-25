@@ -1,0 +1,23 @@
+.navbar-brand {
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    text-decoration: none;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+
+.form-control {
+    width: 75%;
+}
+
+.flex-fill {
+    flex: 1 1 auto;
+}
+
+.footer {
+    flex-shrink: 0;
+}
+

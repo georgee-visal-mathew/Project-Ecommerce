@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>Cart</title>
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+<center><h2 class="mt-4">Your Cart</h2></center>
+    <br>
+<h5 class="ms-4">{{num}} items</h5>
+<hr>
+<div class="row">
+    <div class="col-sm-8">
+        <div class="container">
+        <table class=" table table-bordered table-hover">
+            <tr><th colspan="6">Cart Items</th></tr>
+            {% for i in cart %}
+            <tr><td><img src="{{i.product.image.url}}" height="150px" width="auto" ></td>
+            <td>{{i.product.name}}</td>
+            <td class="fw-bold">Product id: {{i.product.id}}</td>
+            <td class="fw-bold">Quantity: {{i.quantity}}<br>Unit Price: {{i.quantity}}x₹{{i.product.price}}</td>
+            <td class="fw-bold">Subtotal: ₹{{i.subtotal}}</td>
+                {% if i.product.stock > 0 %}
+            <td><a href="{% url 'cart:add_to_cart' i.product.id %}"><i class="fa-solid fa-circle-plus" style="color: #000000;"></i></a><br>
+            <a href="{% url 'cart:cartminus' i.product.id %}"><i class="fa-solid fa-circle-minus" style="color: #000000;"></i></a><br>
+            <a href="{% url 'cart:carttrash' i.product.id %}"><i class="fa-solid fa-trash-can" style="color: #030303;"></i></a></td></tr>
+            {% else %}
+            <a href="{% url 'cart:cartminus' i.product.id %}"><i class="fa-solid fa-circle-minus" style="color: #000000;"></i></a>
+            <a href="{% url 'cart:carttrash' i.product.id %}"><i class="fa-solid fa-trash-can" style="color: #030303;"></i></a></td></tr>
+            {% endif %}
+            {% endfor %}
+        </table></div>
+    </div>
+    <div class="col-sm-4">
+
+         <div class="container">
+
+        <table class="table table-bordered">
+            <tr><th colspan="4">Checkout</th></tr>
+            <tr><th colspan="4">Total Amount: {{total}}</th></tr>
+        </table>
+
+             <a href="{% url 'cart:placeorder' %}" class="btn btn-warning" style="width:300px;border-radius:20px;">Place Order</a><br>
+             <a href="{% url 'shop:category' %}" class="btn btn-danger mt-3" style="width:300px;border-radius:20px;">Continue Shopping</a>
+    </div>
+    </div>
+
+</div>
+</div>
+
+{% endblock %}
