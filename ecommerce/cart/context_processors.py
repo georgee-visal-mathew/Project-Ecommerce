@@ -2,14 +2,14 @@ from cart.models import Cart
 
 def cart_item(request):
     u=request.user
-    count=0
+    c=0
     if(request.user.is_authenticated):
         try:
             cart=Cart.objects.filter(user=u)
-            count=cart.count()
+            c=cart.count()
         except:
-            count=0
-    return {'count':count}
+            c=0
+    return {'count':c}
 
 def count_item(request):
     u=request.user
